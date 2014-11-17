@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>#whyopensource</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+		<div class="reveal">
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				
+				<section>
+					<h2>open source</h2>
+					<h2 class="fragment fade-in">is the</h2>
+					<h2 class="fragment fade-in">only way</h2>
+					<h2>for medicine</h2>
+				</section>
+				
+				<section>
+					<h2><a href="http://twitter.com/marcus_baw">@marcus_baw</a></h2>
+					<br/>
+					<h3 class="fragment fade-in">Locum General Hacktitioner, North West UK</h3>
+					<h3 class="fragment fade-in">Director, @openGPSoC &amp; BawMedical<br/>
+					<h4 class="fragment fade-in">eHealth, Dermatology, Prison, Hospice</h4>
+					<h4 class="fragment fade-in">Medical Director, @NeovaHealth
+					<h4 class="fragment fade-in">Previous Life #1: Emergency Physician</h4>
+					<h4 class="fragment fade-in">Previous Life #2: Anaesthetist</h4>
+				</section>
+				
+				<section>
+					<h2>open source</h2>
+					<h1><strong>IS</strong></h1>
+					<h2>the</h2>
+					<h2>only way</h2>
+					<h2>for medicine</h2>
+				</section>
+
+				<section>
+					<img src="img/the-alchemist.jpg"></img>
+				</section>
+				
+				<!--
+				<section>
+					<img src="img/E.V.Pavlov_by_Repin.jpg"></img>
+				</section>
+				-->
+
+				<section>
+					<img src="img/Journal001.jpg"></img>
+				</section>				
+				
+				<section>
+					define open source if the audience need it
+				</section>
+			
+				<section>
+					<pre>
+						<code class="ruby">
+							require 'json'
+							require 'distribution'
+							
+							class Centiles
+							  
+							    def initialize
+							      @@lms_hash = JSON.parse(File.read('../data/lmsdata.json'))
+							    end  
+							
+							      # age in months; height in cm, weight in kg!
+							    def get_height_centile(sex, age_mth, height_cm)
+							      if sex=="Male"
+							        return height_centile = lms_to_centile(height_cm, @@lms_hash['male']['height'][age_mth])
+							      elsif sex=="Female"
+							        return height_centile = lms_to_centile(height_cm, @@lms_hash['female']['height'][age_mth])
+							      else
+							        #raise error
+							      end
+							    end
+							  
+							    def get_weight_centile(sex, age_mth, weight_kg)
+							      if sex=="Male"
+							        return weight_centile = lms_to_centile(weight, @@lms_hash['male']['weight'][age_mth])
+							      elsif sex=="Female"
+							        return weight_centile = lms_to_centile(weight, @@lms_hash['female']['weight'][age_mth])
+							      else
+							        #raise error
+							      end
+							    end
+							      
+							    def get_bmi_centile(sex, age_mth, bmi)
+							      if sex=="Male"
+							        return bmi_centile = lms_to_centile(bmi, @@lms_hash['male']['bmi'][age_mth])
+							      elsif sex=="Female"
+							        return bmi_centile = lms_to_centile(bmi, @@lms_hash['female']['bmi'][age_mth])
+							      else
+							        #raise error
+							      end
+							    end
+							
+							    def lms_to_centile(x, lms)
+							      # formulae taken from http://www.cdc.gov/growthcharts/percentile_data_files.htm
+							      # x is the measurement under consideration
+							      # returns the percentile as a number from 0 to 100
+							      l = lms[0]
+							      m = lms[1]
+							      s = lms[2]
+							      if l==0
+							        z = log(x/m)/s
+							      else
+							        z = (((x/m)**l)-1)/(l*s)
+							        centile = 100*Distribution::Normal::cdf(z)
+							      end
+							      return centile
+							    end
+							end
+						</code>
+					</pre>
+				</section>
+				
+				<section>
+					define open source if the audience need it
+				</section>
+				
+				<section>
+					closed code
+					closed governance
+					closed standards
+					closed to user comments
+					
+				</section>
+			</div>
+		</div>
+		
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script>
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+ 			    transitionSpeed: 'slow', // default/fast/slow
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				parallaxBackgroundImage: 'img/1280px-Wi-Fi_transparency.svg.png',
+				parallaxBackgroundSize: '1166px 821px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+				]
+			});
+		</script>
+	</body>
+</html>
