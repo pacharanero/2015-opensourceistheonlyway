@@ -65,101 +65,104 @@
 
 				<section>
 					<img src="img/the-alchemist.jpg"></img>
+					<aside class="notes">
+					alchemy
+					science advanced only very slowly when ideas/knowledge were secrets
+					age of enlightenment brought freer sharing of information and rapid scientific progress
+					like many 'revolutions' technology lit the fuse (printing press)
+					book industry... journals... peer review...
+					evidence based medicine
+					</aside>
 				</section>
-				
-				<!--
+
 				<section>
-					<img src="img/E.V.Pavlov_by_Repin.jpg"></img>
+					<img src="img/newton-principia.jpg"></img>
+					<aside class="notes">
+						age of enlightenment <br/>
+						invention of printing press
+					</aside>
 				</section>
-				-->
 
 				<section>
 					<img src="img/Journal001.jpg"></img>
+					<aside class="notes">
+						journals
+					</aside>
 				</section>				
 				
 				<section>
 					<img src="img/pubmed_search_open_source.png"></img>
+					<aside class="notes">
+						invention of Internet
+					</aside>
 				</section>
-			
+								
 				<section>
-					<h3>some open source code</h3>
-					<pre>
-						<code class="ruby">
-							require 'json'
-							require 'distribution'
-							
-							class Centiles
-							  
-							    def initialize
-							      @@lms_hash = JSON.parse(File.read('../data/lmsdata.json'))
-							    end  
-							
-							      # age in months; height in cm, weight in kg!
-							    def get_height_centile(sex, age_mth, height_cm)
-							      if sex=="Male"
-							        return height_centile = lms_to_centile(height_cm, @@lms_hash['male']['height'][age_mth])
-							      elsif sex=="Female"
-							        return height_centile = lms_to_centile(height_cm, @@lms_hash['female']['height'][age_mth])
-							      else
-							        #raise error
-							      end
-							    end
-							  
-							    def get_weight_centile(sex, age_mth, weight_kg)
-							      if sex=="Male"
-							        return weight_centile = lms_to_centile(weight, @@lms_hash['male']['weight'][age_mth])
-							      elsif sex=="Female"
-							        return weight_centile = lms_to_centile(weight, @@lms_hash['female']['weight'][age_mth])
-							      else
-							        #raise error
-							      end
-							    end
-							      
-							    def get_bmi_centile(sex, age_mth, bmi)
-							      if sex=="Male"
-							        return bmi_centile = lms_to_centile(bmi, @@lms_hash['male']['bmi'][age_mth])
-							      elsif sex=="Female"
-							        return bmi_centile = lms_to_centile(bmi, @@lms_hash['female']['bmi'][age_mth])
-							      else
-							        #raise error
-							      end
-							    end
-							
-							    def lms_to_centile(x, lms)
-							      # formulae taken from http://www.cdc.gov/growthcharts/percentile_data_files.htm
-							      # x is the measurement under consideration
-							      # returns the percentile as a number from 0 to 100
-							      l = lms[0]
-							      m = lms[1]
-							      s = lms[2]
-							      if l==0
-							        z = log(x/m)/s
-							      else
-							        z = (((x/m)**l)-1)/(l*s)
-							        centile = 100*Distribution::Normal::cdf(z)
-							      end
-							      return centile
-							    end
-							end
-						</code>
-					</pre>
-				</section>
-				
-				<section>
-					<h4>science advanced only very slowly when ideas/knowledge were secrets</h4>
-					<h4>age of enlightenment brought freer sharing of information and rapid scientific progress</h4>
-					<h4>like many 'revolutions' technology lit the fuse (printing press)</h4>
-					<h4>book industry... journals... peer review...</h4>
-					<h4>evidence based medicine</h4>
-				</section>
-				
-				<section>
-					closed code
-					closed governance
-					closed standards
-					closed to user comments
 					
+					<aside class="notes">
+						
+					</aside>
 				</section>
+
+				<section>
+					<iframe width="1000px" height="1000px" src="http://www.zdnet.com/microsoft-open-sources-more-of-its-net-technologies-7000028031"></iframe>
+					<aside class="notes">
+						even microsoft can see the writing on the wall
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<img width="1000px" height="1087px" src="img/Red_Giant_by_rich35211.jpg">
+						<aside class="notes">
+							sun will become a red giant in about 7 billion years <br/>
+							we need to get our act together before then <br/>
+							solving the same problems over and over again will not get us there!
+						</aside>
+					</section>
+					<section>
+						<h2 id="countdown">
+						</h2>
+
+						<script>
+							//change the text below to reflect your own,
+							var before="earth annihilation"
+							var current="earth is annihilated today"
+							var montharray=new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec")
+
+							function countdown(yr,m,d){
+								theyear=yr;themonth=m;theday=d
+								var today=new Date()
+								var todayy=today.getYear()
+								if (todayy < 1000)
+								todayy+=1900
+								var todaym=today.getMonth()
+								var todayd=today.getDate()
+								var todayh=today.getHours()
+								var todaymin=today.getMinutes()
+								var todaysec=today.getSeconds()
+								var todaystring=montharray[todaym]+" "+todayd+", "+todayy+" "+todayh+":"+todaymin+":"+todaysec
+								futurestring=montharray[m-1]+" "+d+", "+yr
+								dd=Date.parse(futurestring)-Date.parse(todaystring)
+								dday=Math.floor(dd/(60*60*1000*24)*1)
+								dhour=Math.floor((dd%(60*60*1000*24))/(60*60*1000)*1)
+								dmin=Math.floor(((dd%(60*60*1000*24))%(60*60*1000))/(60*1000)*1)
+								dsec=Math.floor((((dd%(60*60*1000*24))%(60*60*1000))%(60*1000))/1000*1)
+								if(dday==0&&dhour==0&&dmin==0&&dsec==1){
+								document.forms.count.count2.value=current
+								return
+								}
+								else
+								document.getElementById("countdown").innerHTML = "Only 7,000,000,000 years, "+dday+ " days, "+dhour+" hours, "+dmin+" minutes, and "+dsec+" seconds left until "+before
+								setTimeout("countdown(theyear,themonth,theday)",1000)
+							}
+							//enter the count down date using the format year/month/day
+							countdown(2115,12,25)
+						</script>
+
+					</section>
+				</section>
+
 			</div>
 		</div>
 		
